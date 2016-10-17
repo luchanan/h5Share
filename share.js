@@ -40,6 +40,7 @@
         pic:"",//分享图片地址
         url:window.location.href,//分享地址
         desc:document.title,//分享描述
+        summary:document.title,
         rightImg:'images/share/share.png',//微信分享提示图片
         overlayClick:true,
         imgTitle:'',
@@ -48,6 +49,8 @@
         timestamp: "",
         nonceStr: "",
         signature: "",
+        wechatShareSucess:null,
+        wechatShareCancel:null
     };
     function getVersion(c){
         var a = c.split("."),
@@ -80,11 +83,37 @@
     }
     AppShare.prototype={
         init:function(){
+            var _this=this;
+            this.settings.sinaWebUrl="http://service.weibo.com/share/share.php?url="+encodeURIComponent(this.settings.url)+"&title="+encodeURIComponent(this.settings.title)+"&pic="+encodeURIComponent(this.settings.pic);
+            this.settings.qzoneWebUrl="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url="+encodeURIComponent(this.settings.url)+"&title="+encodeURIComponent(this.settings.title)+"&pics="+encodeURIComponent(this.settings.pic)+"&desc="+encodeURIComponent(this.settings.desc)+"&summary="+encodeURIComponent(this.settings.summary);
             this.stopBodyScroll();
             if(!this.settings.ele){
                 //不绑定元素
                 document.title=this.settings.title;
                 $("[name='description']").attr("content",this.settings.desc);
+                if(!isUCBrowser&&!isMQQBrowser&&!isWechat){
+                    $("[data-app='wechat'],[data-app='friend'],[data-app='qq']").addClass('hideIcon');
+                    $("[data-app='qzone']").attr("href",this.settings.qzoneWebUrl);
+                    $("[data-app='sina']").attr("href",this.settings.sinaWebUrl);
+                }
+                else{
+                    if(isWechat){
+                        $("[data-app='qq']").addClass('hideIcon');
+                        $("[data-app='qzone']").attr("href",this.settings.qzoneWebUrl);
+                        $("[data-app='sina']").attr("href",this.settings.sinaWebUrl);
+                        $("body").append(this.wechatShareTips());
+                        this.bindWechatShareTipsClick();
+                    }
+                }
+                $(document).on("click","[data-app]",function(){
+                    if($(this).attr("href")!==undefined){
+                        window.location.href=$(this).attr("href");
+                    }
+                    else{
+                        _this.shareEvent($(this).data('app'));
+                    }
+
+                });
             }
             else{
                 //绑定元素
@@ -142,9 +171,15 @@
                     imgUrl:_this.settings.pic, // 分享图标
                     success: function () {
                         // 用户确认分享后执行的回调函数
+                        if($.isFunction(_this.wechatShareSucess)){
+                            _this.wechatShareSucess();
+                        }
                     },
                     cancel: function (){
                         // 用户取消分享后执行的回调函数
+                        if($.isFunction(_this.wechatShareSucess)){
+                            _this.wechatShareCancel();
+                        }
                     }
                 });
                 //发送给朋友
@@ -156,23 +191,31 @@
                     type: 'link', // 分享类型,music、video或link，不填默认为link
                     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                     success: function () {
-                        // 用户确认分享后执行的回调函数
+                        if($.isFunction(_this.wechatShareSucess)){
+                            _this.wechatShareSucess();
+                        }
                     },
                     cancel: function () {
-                        // 用户取消分享后执行的回调函数
+                        if($.isFunction(_this.wechatShareSucess)){
+                            _this.wechatShareCancel();
+                        }
                     }
                 });
-                //qq
+                //qq好友
                 wx.onMenuShareQQ({
                     title:_this.settings.title, // 分享标题
                     desc: _this.settings.desc, // 分享描述
                     link: _this.settings.url, // 分享链接
                     imgUrl: _this.settings.pic, // 分享图标
                     success: function () {
-                       // 用户确认分享后执行的回调函数
+                        if($.isFunction(_this.wechatShareSucess)){
+                            _this.wechatShareSucess();
+                        }
                     },
                     cancel: function () {
-                       // 用户取消分享后执行的回调函数
+                        if($.isFunction(_this.wechatShareSucess)){
+                            _this.wechatShareCancel();
+                        }
                     }
                 });
                 //腾讯微博
@@ -182,10 +225,14 @@
                     link:_this.settings.url, // 分享链接
                     imgUrl:_this.settings.pic, // 分享图标
                     success: function () {
-                       // 用户确认分享后执行的回调函数
+                        if($.isFunction(_this.wechatShareSucess)){
+                            _this.wechatShareSucess();
+                        }
                     },
                     cancel: function () {
-                        // 用户取消分享后执行的回调函数
+                        if($.isFunction(_this.wechatShareSucess)){
+                            _this.wechatShareCancel();
+                        }
                     }
                 });
                 //qq空间
@@ -195,10 +242,14 @@
                     link: _this.settings.url, // 分享链接
                     imgUrl:_this.settings.pic, // 分享图标
                     success: function () {
-                       // 用户确认分享后执行的回调函数
+                        if($.isFunction(_this.wechatShareSucess)){
+                            _this.wechatShareSucess();
+                        }
                     },
                     cancel: function () {
-                        // 用户取消分享后执行的回调函数
+                        if($.isFunction(_this.wechatShareSucess)){
+                            _this.wechatShareCancel();
+                        }
                     }
                 });
             })
@@ -255,21 +306,29 @@
                 }
                 //微信浏览器
                 if((isWechat&&appname=='wechat')||(isWechat&&appname=='friend')){
-                    $(this.settings.html).find(".tips").show();
+                    $("body").find(".wechatShareTips").show();
                 }
             }
         },
         eachIcon:function(){
-            var html='<li><a href="http://service.weibo.com/share/share.php?url='+encodeURIComponent(this.settings.url)+'&title='+encodeURIComponent(this.settings.title)+'&pic='+encodeURIComponent(this.settings.pic)+'"><em class="icon sina"></em><p>'+appList.sina[3]+'</p></a</li>';
+            var html='';
             if(isUCBrowser||isMQQBrowser||isWechat){
-                html+='<li data-app="wechat"><a href="javascript:void(0)"><em class="icon wechat"></em><p>'+appList.wechat[3]+'</p></a></li>';
-                html+='<li data-app="friend"><a href="javascript:void(0)"><em class="icon friend"></em><p>'+appList.friend[3]+'</p></a></li>';
+                html+='<li data-app="wechat"><a href="javascript:void(0)"><em class="appicon wechat"></em><p>'+appList.wechat[3]+'</p></a></li>';
+                html+='<li data-app="friend"><a href="javascript:void(0)"><em class="appicon friend"></em><p>'+appList.friend[3]+'</p></a></li>';
                 if(!isWechat){
-                    html+='<li data-app="qq"><a href="javascript:void(0)"><em class="icon qq"></em><p>'+appList.qq[3]+'</p></a></li>';
+                    html+='<li data-app="sina"><a href="javascript:void(0)"><em class="appicon sina"></em><p>'+appList.sina[3]+'</p></a></li>';
+                    html+='<li data-app="qzone"><a href="javascript:void(0)"><em class="appicon qzone"></em><p>'+appList.qzone[3]+'</p></a></li>';
+                    html+='<li data-app="qq"><a href="javascript:void(0)"><em class="appicon qq"></em><p>'+appList.qq[3]+'</p></a></li>';
+                }
+                else{
+                    html+='<li><a href="'+this.settings.sinaWebUrl+'"><em class="appicon sina"></em><p>'+appList.sina[3]+'</p></a</li>';
+                    html+='<li><a href="'+this.settings.qzoneWebUrl+'"><em class="appicon qzone"></em><p>'+appList.qzone[3]+'</p></a></li>';
                 }
             }
-            html+='<li><a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(this.settings.url)+'&title='+encodeURIComponent(this.settings.title)+'&pics='+encodeURIComponent(this.settings.pic)+'&desc='+
-                        encodeURIComponent(this.settings.desc)+'&summary='+encodeURIComponent(this.settings.desc)+'"><em class="icon qzone"></em><p>'+appList.qzone[3]+'</p></a></li>';
+            else{
+                html+='<li><a href="'+this.settings.sinaWebUrl+'"><em class="appicon sina"></em><p>'+appList.sina[3]+'</p></a</li>';
+                html+='<li><a href="'+this.settings.qzoneWebUrl+'"><em class="appicon qzone"></em><p>'+appList.qzone[3]+'</p></a></li>';
+            }
             $(this.settings.html).find("ul").append(html);
             var _this=this;
             $(this.settings.html).find("li").each(function(index,val){
@@ -278,7 +337,7 @@
                         _this.shareEvent($(this).data('app'));
                     });
                 }
-            })
+            });
             return this.settings.html;
         },
         bindCancel:function(){
@@ -324,6 +383,14 @@
                 }
             }
         },
+        wechatShareTips:function(){
+            return '<div class="wechatShareTips"><img src="'+this.settings.rightImg+'"></div>';
+        },
+        bindWechatShareTipsClick:function(){
+            $(document).on('click', '.wechatShareTips', function(event) {
+                $(this).hide();
+            });
+        },
         htmlTemplate:function(){
             this.settings.html=$('<div class="app_share" style="display:none">');
             var template='<div class="table">\
@@ -339,11 +406,10 @@
             $(template).appendTo($(this.settings.html));
             this.bindCancel();
             if(isWechat){
-                $(this.settings.html).prepend('<div class="tips"><img src="'+this.settings.rightImg+'"></div>');
+                $(this.settings.html).prepend(this.wechatShareTips());
+                this.bindWechatShareTipsClick();
             }
-            $(this.settings.html).find(".tips").click(function(){
-                $(this).hide();
-            });
+
             if(this.settings.overlayClick){
                 $(this.settings.html).find(".table_cell").click($.proxy(function(e){
                     if($(event.target).attr("class")=='table_cell'){

@@ -12,27 +12,18 @@
         <meta name="x5-orientation" content="portrait">
         <meta content="telephone=no,email=no" name="format-detection" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="share.css">
+        <link rel="shortcut appicon" href="/favicon.ico" type="image/x-appicon" />
         <script src="flexible.js"></script>
         <script src="flexible_css.js"></script>
+        <link rel="stylesheet" href="share.css">
         <style>
-            .btn{
-                -webkit-appearance:none;
-                display:block;
-                font-size:16px;
-                width:100%;
-                line-height:40px;
-                background:red;
-                border:none;
-                border-radius:0;
-                color:#fff;
-            }
+        html,body{
+            background:#fafafa !important;
+        }
         </style>
-        <title>分享插件，UC浏览器，手机QQ浏览器支持微信好友，朋友圈分享</title>
+        <title>触发某个按钮的分享事件，请在UC，QQ浏览器测试，其他浏览器要进行判断</title>
     </head>
     <body>
-        <!--输入您微公司信公众号（或者测试号）的appId,appSecret;否则在微信会报错-->
         <?php
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false){
                 include 'Jssdk.class.php';
@@ -40,26 +31,22 @@
                 $signPackage = $jssdk->GetSignPackage();
             }
         ?>
-        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p>
-        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p>
-        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p>
-        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p>
-        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p>
-        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p>
-        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p>
-        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p>
-        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p>
-        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p>
-        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p>
-        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p>
-        <button type="button" class="btn" id="share">立即分享</button>
+        <p>分享到：</p>
+        <em class="appicon sina" data-app="sina"></em>
+        <em class="appicon wechat" data-app="wechat"></em>
+        <em class="appicon friend" data-app="friend"></em>
+        <em class="appicon qzone" data-app="qzone"></em>
+        <em class="appicon qq" data-app="qq"></em>
+
+
+
         <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
         <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
         <script src="share.js"></script>
         <script>
+            //你可以指定一个元素来实现触发分享事件
             <?php if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false){?>
                 appShare({
-                    ele:'#share',//可选
                     title:"标题",//可选
                     desc:'描述',//可选
                     pic:"http://www.frontsucai.com/upload/file/20150701/angular+requirejs/images/touxiang/5.jpg",
@@ -68,9 +55,8 @@
                     nonceStr: "<?php echo $signPackage['nonceStr']?>",//可选
                     signature: "<?php echo $signPackage['signature']?>"//可选
                 });
-           <?php }else{?>
+            <?php }else{?>
                 appShare({
-                    ele:'#share',//可选
                     title:"标题",//可选
                     desc:'描述',//可选
                     pic:"http://www.frontsucai.com/upload/file/20150701/angular+requirejs/images/touxiang/5.jpg"

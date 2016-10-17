@@ -13,6 +13,33 @@ iphone6: 375px * 2 / 10 = 75px
 .overflow {
   overflow: hidden; }
 
+[data-app] {
+  cursor: pointer;
+  /*$(document).on("click","[data-app]",function(){})避免IOS点击不了*/ }
+
+.hideIcon {
+  display: none !important; }
+
+.wechatShareTips {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  display: none;
+  z-index: 9999;
+  cursor: pointer; }
+  .wechatShareTips img {
+    width: 8.5333333333rem;
+    max-width: 8.5333333333rem;
+    height: 7.4133333333rem;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -4.2666666667rem; }
+
 .app_share {
   position: fixed;
   left: 0;
@@ -25,24 +52,6 @@ iphone6: 375px * 2 / 10 = 75px
     display: table;
     width: 100%;
     height: 100%; }
-  .app_share .tips {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    text-align: center;
-    display: none;
-    z-index: 9999; }
-    .app_share .tips img {
-      width: 8.5333333333rem;
-      max-width: 8.5333333333rem;
-      height: 7.4133333333rem;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      margin-left: -4.2666666667rem; }
   .app_share ul {
     text-align: left; }
   .app_share .icon_wrap {
@@ -80,27 +89,10 @@ iphone6: 375px * 2 / 10 = 75px
     display: inline-block;
     margin-right: 0.3066666667rem;
     text-align: center; }
-    .app_share li a:hover {
-      text-decoration: none; }
-  .app_share .icon {
-    width: 1.6rem;
-    height: 1.6rem;
-    vertical-align: top;
-    display: inline-block;
-    background: url(images/share/sina.png) scroll no-repeat center center;
-    background-size: contain; }
-    .app_share .icon.wechat {
-      background: url(images/share/wechat.png) scroll no-repeat center center;
-      background-size: contain; }
-    .app_share .icon.qq {
-      background: url(images/share/qq.png) scroll no-repeat center center;
-      background-size: contain; }
-    .app_share .icon.friend {
-      background: url(images/share/friend.png) scroll no-repeat center center;
-      background-size: contain; }
-    .app_share .icon.qzone {
-      background: url(images/share/qzone.png) scroll no-repeat center center;
-      background-size: contain; }
+    .app_share li a {
+      display: block; }
+      .app_share li a:hover {
+        text-decoration: none; }
   .app_share p {
     color: #2c3e50;
     font-size: 12px;
@@ -115,3 +107,111 @@ iphone6: 375px * 2 / 10 = 75px
       font-size: 36px; }
     [data-dpr="4"] .app_share p {
       font-size: 48px; }
+
+.appicon {
+  width: 60px;
+  height: 60px;
+  vertical-align: top;
+  display: inline-block;
+  background: url(images/share/appicon.png) scroll no-repeat 0 0;
+  background-position-x: 0;
+  background-position-y: -181px;
+  background-size: 60px; }
+  [data-dpr="2"] .appicon {
+    width: 120px; }
+  [data-dpr="2.5"] .appicon {
+    width: 150px; }
+  [data-dpr="2.75"] .appicon {
+    width: 165px; }
+  [data-dpr="3"] .appicon {
+    width: 180px; }
+  [data-dpr="4"] .appicon {
+    width: 240px; }
+  [data-dpr="2"] .appicon {
+    height: 120px; }
+  [data-dpr="2.5"] .appicon {
+    height: 150px; }
+  [data-dpr="2.75"] .appicon {
+    height: 165px; }
+  [data-dpr="3"] .appicon {
+    height: 180px; }
+  [data-dpr="4"] .appicon {
+    height: 240px; }
+  [data-dpr="2"] .appicon {
+    background-position-y: -362px; }
+  [data-dpr="2.5"] .appicon {
+    background-position-y: -453px; }
+  [data-dpr="2.75"] .appicon {
+    background-position-y: -498px; }
+  [data-dpr="3"] .appicon {
+    background-position-y: -543px; }
+  [data-dpr="4"] .appicon {
+    background-position-y: -724px; }
+  [data-dpr="2"] .appicon {
+    background-size: 120px; }
+  [data-dpr="2.5"] .appicon {
+    background-size: 150px; }
+  [data-dpr="2.75"] .appicon {
+    background-size: 165px; }
+  [data-dpr="3"] .appicon {
+    background-size: 180px; }
+  [data-dpr="4"] .appicon {
+    background-size: 240px; }
+  .appicon.wechat {
+    background-position-y: -241px; }
+    [data-dpr="2"] .appicon.wechat {
+      background-position-y: -482px; }
+    [data-dpr="2.5"] .appicon.wechat {
+      background-position-y: -603px; }
+    [data-dpr="2.75"] .appicon.wechat {
+      background-position-y: -663px; }
+    [data-dpr="3"] .appicon.wechat {
+      background-position-y: -723px; }
+    [data-dpr="4"] .appicon.wechat {
+      background-position-y: -964px; }
+  .appicon.qq {
+    background-position-y: -60px; }
+    [data-dpr="2"] .appicon.qq {
+      background-position-y: -120px; }
+    [data-dpr="2.5"] .appicon.qq {
+      background-position-y: -150px; }
+    [data-dpr="2.75"] .appicon.qq {
+      background-position-y: -165px; }
+    [data-dpr="3"] .appicon.qq {
+      background-position-y: -180px; }
+    [data-dpr="4"] .appicon.qq {
+      background-position-y: -240px; }
+  .appicon.friend {
+    background-position-y: 0px; }
+    [data-dpr="2"] .appicon.friend {
+      background-position-y: 0px; }
+    [data-dpr="2.5"] .appicon.friend {
+      background-position-y: 0px; }
+    [data-dpr="2.75"] .appicon.friend {
+      background-position-y: 0px; }
+    [data-dpr="3"] .appicon.friend {
+      background-position-y: 0px; }
+    [data-dpr="4"] .appicon.friend {
+      background-position-y: 0px; }
+  .appicon.qzone {
+    background-position-y: -121px; }
+    [data-dpr="2"] .appicon.qzone {
+      background-position-y: -241px; }
+    [data-dpr="2.5"] .appicon.qzone {
+      background-position-y: -301px; }
+    [data-dpr="2.75"] .appicon.qzone {
+      background-position-y: -331px; }
+    [data-dpr="3"] .appicon.qzone {
+      background-position-y: -362px; }
+    [data-dpr="4"] .appicon.qzone {
+      background-position-y: -482px; }
+
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+.clearfix {
+  zoom: 1; }

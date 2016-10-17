@@ -3,31 +3,38 @@
 .overflow{
     overflow:hidden;
 }
+[data-app]{
+    cursor: pointer;/*$(document).on("click","[data-app]",function(){})避免IOS点击不了*/
+}
+.hideIcon{
+    display:none !important;
+}
+.wechatShareTips{
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,.6);
+    text-align:center;
+    display:none;
+    z-index: 9999;
+    cursor:pointer;
+    img{
+        width:px2rem(640);
+        max-width:px2rem(640);
+        height:px2rem(556);
+        position: absolute;
+        top:0;
+        left:50%;
+        margin-left:px2rem(-320);
+    }
+}
 .app_share{
     .table{
         display: table;
         width: 100%;
         height: 100%;
-    }
-    .tips{
-        position:fixed;
-        left:0;
-        top:0;
-        width:100%;
-        height:100%;
-        background-color:rgba(0,0,0,.6);
-        text-align:center;
-        display:none;
-        z-index: 9999;
-        img{
-            width:px2rem(640);
-            max-width:px2rem(640);
-            height:px2rem(556);
-            position: absolute;
-            top:0;
-            left:50%;
-            margin-left:px2rem(-320);
-        }
     }
     position:fixed;
     left:0;
@@ -64,32 +71,12 @@
         display:inline-block;
         margin-right:px2rem(23);
         text-align:center;
-        a:hover{
-            text-decoration: none;
-        }
-    }
-    .icon{
-        width:px2rem(120);
-        height:px2rem(120);
-        vertical-align:top;
-        display:inline-block;
-        background:url(images/share/sina.png) scroll no-repeat center center;
-        background-size:contain;
-        &.wechat{
-            background:url(images/share/wechat.png) scroll no-repeat center center;
-            background-size:contain;
-        }
-        &.qq{
-            background:url(images/share/qq.png) scroll no-repeat center center;
-            background-size:contain;
-        }
-        &.friend{
-            background:url(images/share/friend.png) scroll no-repeat center center;
-            background-size:contain;
-        }
-        &.qzone{
-            background:url(images/share/qzone.png) scroll no-repeat center center;
-            background-size:contain;
+        a{
+            display:block;
+            &:hover{
+                text-decoration: none;
+            }
+
         }
     }
     p{
@@ -97,4 +84,36 @@
         @include px2px(font-size,24);
         padding:px2rem(20) 0;
     }
+}
+.appicon{
+    @include px2px(width,120);
+    @include px2px(height,120);
+    vertical-align:top;
+    display:inline-block;
+    background:url(images/share/appicon.png) scroll no-repeat 0 0;
+    background-position-x:0;
+    @include px2px(background-position-y,-362);
+    @include px2px(background-size,120);
+    &.wechat{
+        @include px2px(background-position-y,-482);
+    }
+    &.qq{
+        @include px2px(background-position-y,-120);
+    }
+    &.friend{
+        @include px2px(background-position-y,0);
+    }
+    &.qzone{
+        @include px2px(background-position-y,-241);
+    }
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix{
+    zoom: 1;
 }

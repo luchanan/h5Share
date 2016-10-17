@@ -1,21 +1,50 @@
-##该插件是基于jquery或者zepto来实现的h5移动端分享插件
+### 预览地址: ###
+[http://www.frontsucai.com/upload/file/20161012/h5Share/index.html](http://www.frontsucai.com/upload/file/20161012/h5Share/index.html)
+### 新特性: ###
 
-##h5Share实现的功能有：
+- 新增图标点击分享功能，大概是这个效果：[http://m.sohu.com/n/469995844/?wscrid=1137_1](http://m.sohu.com/n/469995844/?wscrid=1137_1)
+- uc,qq浏览器中qq空间和新浪微博分享改为对应浏览器的接口，代替原来跳转地址
 
-* 在UC浏览器或者QQ浏览器实现打开手机QQ（发送好友）,微信APP朋友圈、发送好友的自定义分享。
 
-![image](http://7qn7ih.com1.z0.glb.clouddn.com/20160216154326.png)
-![image](http://7qn7ih.com1.z0.glb.clouddn.com/20160216160333.jpg)
-![image](http://7qn7ih.com1.z0.glb.clouddn.com/20160216161011.jpg)
-* 微信浏览器浏览器右上角提示分享箭头。
-![image](http://7qn7ih.com1.z0.glb.clouddn.com/20160216154336.png)
-![image](http://7qn7ih.com1.z0.glb.clouddn.com/20160216154331.png)
+### 调用方法: ###
+```javascript
+<?php if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false){?>
+    appShare({
+        ele:'#share',//可选
+        title:"标题",//可选
+        desc:'描述',//可选
+        pic:"http://www.frontsucai.com/upload/file/20150701/angular+requirejs/images/touxiang/5.jpg",
+        appId: "<?php echo $signPackage['appId']?>",//可选
+        timestamp:"<?php echo $signPackage['timestamp']?>",//可选
+        nonceStr: "<?php echo $signPackage['nonceStr']?>",//可选
+        signature: "<?php echo $signPackage['signature']?>"//可选
+    });
+<?php }else{?>
+    appShare({
+        ele:'#share',//可选
+        title:"标题",//可选
+        desc:'描述',//可选
+        pic:"http://www.frontsucai.com/upload/file/20150701/angular+requirejs/images/touxiang/5.jpg"
+    });
+<?php };?>
+```
+### uc手机浏览器gif展示效果(测试环境：iphone6s+,ios9.3.2,ucv11.1.5.861): ###
+[http://7qn7ih.com1.z0.glb.clouddn.com/2016101123072.gif](http://7qn7ih.com1.z0.glb.clouddn.com/2016101123072.gif)
+### qq手机浏览器gif展示效果(测试环境：iphone6s+,ios9.3.2,qqv6.9.1.2509): ###
+[http://7qn7ih.com1.z0.glb.clouddn.com/2016101123072.gif](http://7qn7ih.com1.z0.glb.clouddn.com/2016101123071.gif)
+### 微信浏览器gif展示效果(测试环境：iphone6s+,ios9.3.2,wechat6.3.27): ###
+[http://7qn7ih.com1.z0.glb.clouddn.com/2016101123072.gif](http://7qn7ih.com1.z0.glb.clouddn.com/2016101123073.gif)
+### safari浏览器gif展示效果(测试环境：iphone6s+,ios9.3.2): ###
+[http://7qn7ih.com1.z0.glb.clouddn.com/2016101123072.gif](http://7qn7ih.com1.z0.glb.clouddn.com/2016101123074.gif)
+### 使用注意事项: ###
+![](http://7qn7ih.com1.z0.glb.clouddn.com/20161012173354.jpg)
+![](http://7qn7ih.com1.z0.glb.clouddn.com/20161012173430.jpg)
+![](http://7qn7ih.com1.z0.glb.clouddn.com/20161012174306.jpg)
+- 上面的appid和是appsecret是个人测试号的，要关注测试公众号，然后分享功能才可以正常使用，否则提取的是title和默认第一张图，而不是自己要自定义分享的内容，建议改为自己的appid和是appsecret。
+- 接口配置信息中的Token要与token.php中定义的TOKEN值要一样
+- 要设置js安全域名，不要加http://
+- qq手机浏览器中的新浪微博分享，只要登录了，然后在一段时间内就不会再登录，当点击图标的时候，会显示分享功能（有时候这时间有点长）。
+- uc手机浏览器自定义图片分享好像没有用，它自己截了一张图
 
-* 在非上面的UC、QQ浏览器，微信其他浏览器只会显示QQ空间和新浪微博的h5分享ICON。
-
-![image](http://7qn7ih.com1.z0.glb.clouddn.com/20160216154308.png)
-
-##注意问题
-
-* 在微信浏览器想实现分享，必须要在公众平台配置JS安全域名。
-* UC浏览器中的分享朋友圈、发送好友暂时没有发送图片的配置。（貌似没有UC没有提供接口）。
+### 微信测试分享请先关注测试公账号: ###
+![](http://7qn7ih.com1.z0.glb.clouddn.com/201610121739.jpg)
