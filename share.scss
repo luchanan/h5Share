@@ -1,0 +1,100 @@
+@import "base/variable.scss";
+@import "base/function.scss";
+.overflow{
+    overflow:hidden;
+}
+.app_share{
+    .table{
+        display: table;
+        width: 100%;
+        height: 100%;
+    }
+    .tips{
+        position:fixed;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        background-color:rgba(0,0,0,.6);
+        text-align:center;
+        display:none;
+        z-index: 9999;
+        img{
+            width:px2rem(640);
+            max-width:px2rem(640);
+            height:px2rem(556);
+            position: absolute;
+            top:0;
+            left:50%;
+            margin-left:px2rem(-320);
+        }
+    }
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,.6);
+    z-index: 999;
+    ul{
+        text-align:left;
+    }
+    .icon_wrap{
+        padding:px2rem(60) 0 px2rem(40) px2rem(30);
+        background:#ebe6e6;
+    }
+    .share_content{
+        transition:transform 0.5s ease;
+        transform: translateY(100%);
+        &.show{
+            transform: translateY(0) !important;
+        }
+    }
+    .cancel{
+        @include px2px(font-size,30);
+        background:#fff;
+        line-height:px2rem(92);
+        text-align:center;
+    }
+    .table_cell{
+        vertical-align:bottom;
+        display: table-cell;
+    }
+    li{
+        display:inline-block;
+        margin-right:px2rem(23);
+        text-align:center;
+        a:hover{
+            text-decoration: none;
+        }
+    }
+    .icon{
+        width:px2rem(120);
+        height:px2rem(120);
+        vertical-align:top;
+        display:inline-block;
+        background:url(images/share/sina.png) scroll no-repeat center center;
+        background-size:contain;
+        &.wechat{
+            background:url(images/share/wechat.png) scroll no-repeat center center;
+            background-size:contain;
+        }
+        &.qq{
+            background:url(images/share/qq.png) scroll no-repeat center center;
+            background-size:contain;
+        }
+        &.friend{
+            background:url(images/share/friend.png) scroll no-repeat center center;
+            background-size:contain;
+        }
+        &.qzone{
+            background:url(images/share/qzone.png) scroll no-repeat center center;
+            background-size:contain;
+        }
+    }
+    p{
+        color:#2c3e50;
+        @include px2px(font-size,24);
+        padding:px2rem(20) 0;
+    }
+}
