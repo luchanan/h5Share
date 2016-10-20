@@ -63,6 +63,12 @@
                     title:"标题",//可选
                     desc:'描述',//可选
                     pic:"http://www.frontsucai.com/upload/file/20150701/angular+requirejs/images/touxiang/5.jpg",
+                    wechatShareSucess:function(){
+                        console.log("wechat share success");
+                    },
+                    wechatShareCancel:function(){
+                        console.log("wechat share cancel");
+                    },
                     appId: "<?php echo $signPackage['appId']?>",//可选
                     timestamp:"<?php echo $signPackage['timestamp']?>",//可选
                     nonceStr: "<?php echo $signPackage['nonceStr']?>",//可选
