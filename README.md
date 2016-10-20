@@ -34,7 +34,7 @@
 [http://7qn7ih.com1.z0.glb.clouddn.com/2016101123072.gif](http://7qn7ih.com1.z0.glb.clouddn.com/2016101123071.gif)
 ### 微信浏览器gif展示效果(测试环境：iphone6s+,ios9.3.2,wechat6.3.27): ###
 [http://7qn7ih.com1.z0.glb.clouddn.com/2016101123072.gif](http://7qn7ih.com1.z0.glb.clouddn.com/2016101123073.gif)
-### safari浏览器gif展示效果(测试环境：iphone6s+,ios9.3.2): ###
+### safari浏览器gif展示效果(测试环境：iphone6s+,ios9.3.2，safari9.0): ###
 [http://7qn7ih.com1.z0.glb.clouddn.com/2016101123072.gif](http://7qn7ih.com1.z0.glb.clouddn.com/2016101123074.gif)
 ### 使用注意事项: ###
 ![](http://7qn7ih.com1.z0.glb.clouddn.com/20161012173354.jpg)
