@@ -54,3 +54,11 @@
 
 ### 微信测试分享请先关注测试公账号: ###
 ![](http://7qn7ih.com1.z0.glb.clouddn.com/201610121739.jpg)
+
+### 测试机型: ###
+### 红米note2: ###
+- UC浏览器：Mozilla/5.0 (Linux; U; Android 5.0.2; zh-CN; Redmi Note 2 Build/LRX22G) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/40.0.2214.89 UCBrowser/11.2.0.880 Mobile Safari/537.36，BUG:QQ空间分享点击无效
+- 微信：Mozilla/5.0 (Linux; Android 5.0.2; Redmi Note 2 Build/LRX22G) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile MQQBrowser/6.8 TBS/036872 Safari/537.36 MicroMessenger/6.3.28.900 NetType/WIFI Language/zh_CN
+### OPPO R7S: ###
+- UC浏览器：Mozilla/5.0 (Linux; U; Android 4.4.4; zh-CN; OPPO R7s Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/40.0.2214.89 UCBrowser/11.2.0.880 Mobile Safari/537.36，BUG:QQ空间分享点击无效
+- 微信：Mozilla/5.0 (Linux; Android 4.4.4; OPPO R7s Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile MQQBrowser/6.8 TBS/036872 Safari/537.36 MicroMessenger/6.3.30.920 NetType/WIFI Language/zh_CN
