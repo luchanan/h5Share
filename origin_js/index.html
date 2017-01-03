@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen" />    
+		<meta content="telephone=no,email=no" name="format-detection" />
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+		<link rel="stylesheet" type="text/css" href="css/mCssreset.css">
+		<link rel="stylesheet" type="text/css" href="css/share.css">
+		<script src="js/lu_share.js?v=1.0"></script>
+		<script src=""></script>
+		<script>
+			window.onload=function(){
+				var share=Lu_share({
+					pic:"http://enc.gaosouyi.com/ueditor/php/upload/image/20150601/1433120042511004.jpg",
+					title:"标题：QQ浏览器8官方网站",
+					url:"http://www.frontsucai.com/",
+					desc:"详情：使用h5+css3实现的炫效果，更多精彩尽在7端素材网",
+					summary:"摘要：使用h5+css3实现的炫效果"
+				});
+				document.getElementById("btn").onclick=function(){
+					share.show();
+				}
+			}
+		</script>
+		<title></title>
+		<style>
+			.btn{
+				  -webkit-animation: none;
+  display: block;
+  width: 100%;
+  border: none;
+  font-size: 14px;
+  color: #ffffff;
+  height: 44px;
+  line-height: 44px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #de2b2d;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div class="lu_share">
+			<div class="mask"></div>
+			<div class="share">
+				<div class="share_inner">
+					<div class="content">
+						<ul class="clearfix">
+							<li><a href="javascript:void(0)"><span class="icon sina"></span><div class="share_name">新浪微博</div></a></li>
+							<li><a href="javascript:void(0)"><span class="icon qzone"></span><div class="share_name">QQ空间</div></a></li>
+							<li><a href="javascript:void(0)"><span class="icon friend"></span><div class="share_name">朋友圈</div></a></li>
+							<li><a href="javascript:void(0)"><span class="icon weixin"></span><div class="share_name">微信好友</div></a></li>
+						</ul>
+					</div>
+					<div class="weishare"><img src="images/weixin .png" alt=""></div>
+					<div class="code">
+						<div class="code_inner">
+							<div class="code_content">
+								<img src="images/code.png" alt="">
+								<div class="code_intro">长按下载，打开微信扫一扫</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>-->
+		<input type="button" value="分享" id="btn"  class="btn"/>
+	</body>
+</html>

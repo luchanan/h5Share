@@ -1,0 +1,99 @@
+.lu_share{
+	position: relative;
+	/*pointer-events: none;*/
+	position:fixed;
+	left: 0;
+	top: 0;
+	z-index: 99999;
+	display: none;
+}
+.lu_share,.lu_share .mask,.lu_share .share{
+	width: 100%;
+	height: 100%;
+}
+.lu_share .weishare{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+}
+.lu_share .code{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+	display: table;
+}
+.lu_share .code .code_inner{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+.lu_share .code .code_content{
+	width: 80%;
+	display: inline-block;
+	color: #fff;
+	font-size: 16px;
+}
+.lu_share .mask{
+	background-color: rgba(0,0,0,0.5);
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 0;;
+}
+.lu_share .share{
+	display: table;
+	position: relative;
+	z-index: 2;
+	pointer-events: auto;
+}
+.lu_share .share .share_inner{
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: center;
+}
+.lu_share .content{
+	background-color: #f3f3f3;
+	padding: 20px 0px 10px 0px;
+}
+.lu_share .content li{
+	float: left;
+	font-size: 0;
+	margin: 0 0px 14px 0;
+	padding: 0 10px 0 10px;
+}
+.lu_share .content ul{
+	display: inline-block;
+}
+.lu_share .content li a{
+	display: block;
+}
+.lu_share .content ul:last-child li{
+	margin-bottom: 0;
+}
+.lu_share .icon{
+	display: inline-block;
+	background: url(../images/share.png) scroll no-repeat -3px 0;
+	background-size: 320px;
+	width:60px;height:60px;
+}
+.lu_share .qzone{
+	background-position:-66px -0px;
+}
+.lu_share .friend{
+	background-position:-128px -0px;
+}
+.lu_share .weixin{
+	background-position:-190px -0px;
+}
+.lu_share .share_name {
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+  padding: 5px 0;
+}

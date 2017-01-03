@@ -1,0 +1,337 @@
+@charset "utf-8";
+*{
+	box-sizing:border-box;
+}
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fieldset, lengend, button, input, textarea, th, td,menu{
+	margin: 0;
+	padding: 0;
+}
+/*分别设置IOS，安卓，winphone默认中英文，数字*/
+body {
+	font: 100%/1.5 'Heiti SC', 'Helvetica', 'HelveticaNeue', 'Droidsansfallback', "Droid Sans", 'Dengxian', 'Segoe', 'microsoft yahei';
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	font-size: 100%;
+}
+address, cite, dfn, em, var, i {
+	font-style: normal;
+}
+code, kbd, pre, samp, tt {
+	font-family: "Courier New", Courier, monospace;
+}
+small {
+	font-size: 12px;
+}
+ul, ol {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	display:block;
+}
+a:focus, input:focus, textarea:focus {
+	outline: none;
+}
+a:link, a:visited {
+	color: #333333;
+}
+a:hover, a:active {
+	color: #ff1f1a;
+	text-decoration: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* 禁止拉伸 */
+textarea {
+	resize: none;
+}
+/* 改变iPhone中按钮默认样式 */
+input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::-webkit-file-upload-button, button {
+ -webkit-appearance:none;
+}
+/* 禁用iPhone中Safari的字号自动调整 */
+html {
+	-webkit-text-size-adjust: none;
+	font-size:100%;/*rem根元素10px=1rem*/
+}
+/* 设置HTML5元素为块 */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+/* 设置图片视频等自适应调整 */
+img, embed, object, video, iframe {
+	width: auto;
+	max-width: 100%;
+	height: auto;
+}
+body,html{
+	min-height: 100%;
+	height:100%;
+	max-width:640px;
+	margin:0 auto;
+}
+/*以下为公用部分*/
+.ellipsis {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.break {
+	word-break: break-all;
+	word-wrap: break-word
+}
+.clearfix:after {
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix{
+	zoom: 1;
+}
+/*头部*/
+.header{
+	height:2.75rem;
+	line-height:2.75rem;
+	background-color:#fff;
+	padding:0 1.875rem 0 3.125rem;
+	font-size:1rem;
+	color:#222222;
+	position:relative;
+	-webkit-box-shadow: 0 2px 2px rgba(6,0,1,.05);
+	-moz-box-shadow: 0 2px 2px rgba(6,0,1,.05);
+	box-shadow: 0 2px 2px rgba(6,0,1,.05);
+}
+.header a{
+	position:absolute;
+}
+.header .left{
+	top: 9px;
+	left: 5px;
+	width: 45px;
+	height: 25px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.header span{
+	vertical-align:top;
+}
+.header .back{
+	background: url(../images/css_sprite.png) scroll no-repeat -1px -6px;
+	width: 7px;
+	height: 13px;
+	display: inline-block;
+	text-indent: -9999rem;
+	background-size:11.25rem 11.25rem;
+	margin:6px 4px 0 0;
+}
+.header .logo{
+	background: url(../images/css_sprite.png) scroll no-repeat -12px -0px;
+	width:27px;height:25px;
+	display: inline-block;
+	background-size:11.25rem 11.25rem;
+}
+.header .right{
+	position:absolute;
+	right:0.9375rem;
+	top:0px;
+	font-size:14px;
+	color:#222;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+/*头部*/
+/*电话*/
+.call{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	max-width: 640px;
+	background-color: #fff;
+	height: 55px;
+	line-height: 55px;
+	background-color: #fff;
+	-webkit-box-shadow: 0 -2px 4px rgba(6,0,1,.1);
+	-moz-box-shadow: 0 -2px 4px rgba(6,0,1,.1);
+	box-shadow: 0 -2px 4px rgba(6,0,1,.1);
+}
+.call a{
+	display: block;
+	color: #666666;
+	font-size: 14px;
+	text-align: center;
+	font-weight: bold;
+}
+.call a em{
+	color: #2563bb;
+	margin:1px 0 0 5px;
+	vertical-align:top;
+	display: inline-block;
+	vertical-align: top;
+}
+/*电话*/
+/*底部红色*/
+.redBottom{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	max-width: 640px;
+	background-color: #de2b2d;
+	height: 48px;
+}
+.redBottom a{
+	display: block;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+	font-weight: bold;
+	line-height: 48px;
+}
+/*底部红色*/
+/*顶部右边更多*/
+.header .right .topMoreWrap i{
+	background-image: url(../images/css_sprite.png);
+	width:15px;height:12px;background-position:-165px -0px;
+	display: inline-block;
+	background-size:11.25rem 11.25rem;
+	text-indent: -9999em;
+	position: absolute;
+	right: 0;
+	top:16px;
+}
+.header .right .topMoreWrap i.close{
+	background-position:-146px -0px;
+}
+.header .right .topMoreWrap{
+	width: 30px;
+	height: 44px;
+	display: inline-block;
+	position: relative;
+}
+.header .right .topMoreWrap.s1{
+	display: none;
+}
+.getMore {
+	position: absolute;
+	top: 44px;
+	width: 100%;
+	max-width:640px;
+	z-index: 2;
+	border-top: solid 1px #dadada;
+	border-bottom: solid 1px #dadada;
+	background-color: #fff;
+	height: 45px;
+	overflow: hidden;
+	display: none;
+}
+.getMore .topArrow{
+	display: inline-block;
+	position: absolute;
+	right: 13px;
+	top: -20px;
+	width: 20px;
+	height: 20px;
+}
+.getMore .topArrow em{
+	display: inline-block;
+	position: absolute;
+}
+.getMore .arrow1{
+	top: 0;
+	width: 0;
+	height: 0;
+	border-width: 10px;
+	border-color: transparent transparent #dadada transparent;
+	border-style: solid;
+}
+.getMore .arrow2{
+	top: 1px;
+	width: 0;
+	height: 0;
+	border-width: 10px;
+	border-color: transparent transparent #fff transparent;
+	border-style: solid;
+}
+.getMore ul{
+	white-space: nowrap;
+  	overflow-x: scroll;
+  	-webkit-overflow-scrolling: touch;
+	width: auto;
+	position: relative;
+	-webkit-user-select: none;
+	 -moz-user-select: none;
+	 user-select: none;
+	 -moz-user-select: none;
+	 -ms-user-select: none;
+	 padding-bottom: 10px;
+}
+.getMore li{
+	display: inline-block;
+	-webkit-transform: translate3d(0,0,0); 
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  -webkit-transition: opacity .2s .2s ease,-webkit-transform .4s .2s cubic-bezier(0.215,0.61,0.355,1);
+  -moz-transition: opacity .2s .2s ease,-webkit-transform .4s .2s cubic-bezier(0.215,0.61,0.355,1);
+  transition: opacity .2s .2s ease,-webkit-transform .4s .2s cubic-bezier(0.215,0.61,0.355,1);
+  transition: opacity .2s .2s ease,transform .4s .2s cubic-bezier(0.215,0.61,0.355,1);
+}
+.getMore li a{
+	color: #666666;
+	font-size: 14px;
+	line-height: 44px;
+	display: block;
+	padding: 0 14px;
+}
+/*顶部右边更多*/
+/*底部刷新*/
+.pullDown, .pullUp{
+	background:#fff;
+	height:48px;
+	line-height:48px;
+	font-size:14px;
+	color:#222222;
+	text-align: center;
+	width: 100%;
+	max-width: 640px;
+	margin: 0 auto;
+}
+.pullDown .pullDownIcon, .pullUp .pullUpIcon  {
+	display:inline-block;
+	vertical-align:top;
+	margin: 15px 7px 0 0;
+	background: url(/Public/Images/css_sprite.png) 0 0 no-repeat;
+	width:16px;height:16px;background-position:-40px -18px;
+	-webkit-background-size:11.25rem 11.25rem;
+	background-size:11.25rem 11.25rem;
+	-webkit-transition-property:-webkit-transform;
+	-webkit-transition-duration:250ms;	
+}
+.pullDown .pullDownIcon {
+	-webkit-transform:rotate(0deg) translateZ(0);
+}
+.pullUp .pullUpIcon  {
+	-webkit-transform:rotate(-180deg) translateZ(0);
+}
+
+.pullDown.flip .pullDownIcon {
+	-webkit-transform:rotate(-180deg) translateZ(0);
+}
+.pullUp.flip .pullUpIcon {
+	-webkit-transform:rotate(0deg) translateZ(0);
+}
+.pullDown.loading .pullDownIcon, .pullUp.loading .pullUpIcon {
+	background-position:-60px -17px;
+	-webkit-transform:rotate(0deg) translateZ(0);
+	-webkit-transition-duration:0ms;
+	-webkit-animation-name:loading;
+	-webkit-animation-duration:2s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:linear;
+}
+@-webkit-keyframes loading {
+	from { -webkit-transform:rotate(0deg) translateZ(0); }
+	to { -webkit-transform:rotate(360deg) translateZ(0); }
+}
+/*底部刷新*/
